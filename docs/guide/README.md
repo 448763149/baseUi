@@ -4,7 +4,7 @@
  * @Autor: HuQiang
  * @Date: 2021-07-12 10:20:16
  * @LastEditors: HuQiang
- * @LastEditTime: 2021-07-12 10:51:13
+ * @LastEditTime: 2021-07-12 14:43:43
  * @detail: 
  * @change: 
 -->
@@ -15,26 +15,8 @@
 ::: demo 使用v-model与Vue实例中的一个变量进行关联，绑定的变量需要是字符串类型。
 ```html
 <template>
-  <div class="red-center-text">
-      <p>{{ message }}</p>
-      <input v-model="message" placeholder="Input something..."/>
-  </div>
+  <h-input></h-input>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      message: 'Hello Vue'
-    }
-  }
-}
-</script>
-<style>
-.red-center-text { 
-  color: #ff7875;
-  text-align: center;
-}
-</style>
 ```
 :::
 
