@@ -4,7 +4,7 @@ heroImage: /images/logo.png
 heroText: 文档管理
 tagline: 使用手册
 actionText: 快速上手 →
-actionLink: /guide/
+actionLink: /guide/magnifier/
 features:
 - title: 简洁至上
   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
