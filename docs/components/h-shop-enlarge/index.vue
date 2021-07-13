@@ -4,8 +4,17 @@
 			<div class="pic_img">
 				<div class="magnify">
 					<div ref="previewBox" class="preview-box" @mousemove="move($event)" @mouseout="out">
-						<img :src="showSrc1" alt="" />
-						<div ref="hoverBox" class="hover-box" />
+						<div v-if="hasPlayer&&type=='player'" class="pre-player" @click="isPlay=true">
+							<img src="../../.vuepress/public/images/product/play.png">
+						</div>
+						<p v-if="hasPlayer&&type=='player'" class="pre-text" @click="isPlay=true">播放</p>
+						<div v-if="isPlay&&type=='player'" class="h-100" style="top: 0px;left:0px">
+							<video ref="myVideo" autoplay width="360" controls="controls" height="360" :src="playerUrl"
+								class="video-box"></video>
+							<div v-if="isPlay" class="video-out" @click="isPlay=false">退出播放</div>
+						</div>
+						<img :src="showSrc1" v-if="!isPlay" alt="" />
+						<div v-if="!isPlay" ref="hoverBox" class="hover-box" />
 					</div>
 					<div v-show="zoomVisiable" ref="zoomBox" class="zoom-box">
 						<img ref="bigImg" :src="showBigSrc1" alt="" />
@@ -14,31 +23,23 @@
 			</div>
 			<div class="pic_slide">
 				<div class="thumbnail-box">
-					<i v-if="allNum > 5" class="btn btn-prev" @click="prev"><</i>
-					<i v-if="allNum > 5" class="btn btn-next" @click="next">></i>
-					<!-- <a-icon v-if="allNum > 5" type="left" class="btn btn-prev" @click="prev" />
+					<i v-if="allNum > 5" class="btn btn-prev" @click="prev">
+						< </i>
+							<i v-if="allNum > 5" class="btn btn-next" @click="next">></i>
+							<!-- <a-icon v-if="allNum > 5" type="left" class="btn btn-prev" @click="prev" />
 					<a-icon v-if="allNum > 5" type="right" class="btn btn-next" @click="next" /> -->
-					<div class="list">
-						<div ref="owl" class="deli-owl" :style="{ right: owlRight + 'px' }">
-							<ul class="slide_list clearfix">
-								<li class="slide_item" :class="inde == 1000 ? 'item-cur' : ''" @mouseover="
-                    mouseOv(
-                      1000,
-                      productInfo.bigImageUrl,
-                      productInfo.bigImageUrl
-                    )
+							<div class="list">
+								<div ref="owl" class="deli-owl" :style="{ right: owlRight + 'px' }">
+									<ul class="slide_list clearfix">
+										<li v-for="(item, index) in productInfo.productMultiImage" :key="index"
+											:class="inde == index ? 'item-cur' : ''" class="slide_item" @mouseover="
+                    mouseOv(index, item.bigImageUrl, item.bigImageUrl,item.player)
                   ">
-									<img :src="productInfo.bigImageUrl" alt="#" />
-								</li>
-								<li v-for="(item, index) in productInfo.productMultiImage" :key="index"
-									:class="inde == index ? 'item-cur' : ''" class="slide_item" @mouseover="
-                    mouseOv(index, item.bigImageUrl, item.bigImageUrl)
-                  ">
-									<img :src="item.bigImageUrl" alt="#" />
-								</li>
-							</ul>
-						</div>
-					</div>
+											<img :src="item.bigImageUrl" alt="#" />
+										</li>
+									</ul>
+								</div>
+							</div>
 				</div>
 			</div>
 		</div>
@@ -78,6 +79,10 @@
 				type: String,
 				default: "",
 			},
+			type: {
+				type: String,
+				default: "",
+			},
 		},
 
 		data() {
@@ -92,65 +97,85 @@
 				leftPx: [],
 				reLeng: 0, // 总共长度
 				owlRight: 0,
-				inde: 1000,
+				inde: 0,
 				showSrc1: "",
 				showBigSrc1: "",
 				allNum: "",
 				leng: 0, // 多维图长度
+				hasPlayer: false,
+				playerUrl: '',
+				isPlay: false,
 			};
 		},
 		created() {
-			this.showSrc1 = this.productInfo.bigImageUrl;
-			this.showBigSrc1 = this.productInfo.bigImageUrl;
-			this.allNum = this.productInfo.productMultiImage.length + 1;
+			this.showSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
+			this.showBigSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
+			this.allNum = this.productInfo.productMultiImage.length;
+			this.playerUrl = this.productInfo.productMultiImage[0].player;
+			if (this.playerUrl) {
+				this.hasPlayer = true;
+			} else {
+				this.hasPlayer = false;
+			}
 		},
 		methods: {
 			out() {
 				this.zoomVisiable = false;
 			},
 			// 鼠标移入切换大图显示
-			mouseOv: function(i, s, b) {
+			mouseOv: function(i, s, b, p) {
 				this.inde = i;
 				this.showSrc1 = s;
 				this.showBigSrc1 = b;
+				if (p && this.isPlay == false) {
+					this.hasPlayer = true;
+					this.playerUrl = p
+				} else if (p && this.isPlay == true) {
+					this.hasPlayer = true;
+				} else if (!p) {
+					this.hasPlayer = false;
+				}
 			},
 			move(ev) {
-				this.init();
-				// 鼠标距离屏幕距离
-				// eslint-disable-next-line prefer-const
-				let moveX = ev.clientX;
-				// eslint-disable-next-line prefer-const
-				let moveY = ev.clientY;
-				// 大盒子距离顶部的距离
-				// eslint-disable-next-line prefer-const
-				let offsetLeft = offset(this.oPreviewBox).left;
+				if (!this.isPlay) {
+					this.init();
+					// 鼠标距离屏幕距离
+					// eslint-disable-next-line prefer-const
+					let moveX = ev.clientX;
+					// eslint-disable-next-line prefer-const
+					let moveY = ev.clientY;
+					// 大盒子距离顶部的距离
+					// eslint-disable-next-line prefer-const
+					let offsetLeft = offset(this.oPreviewBox).left;
 
-				// eslint-disable-next-line prefer-const
-				let offsetTop = offset(this.oPreviewBox).top;
-				let left = moveX - offsetLeft - this.houverWidth / 2;
-				let top;
-				if (this.scroll > 0) {
-					top = moveY - offsetTop + this.scroll - this.houverHeight / 2;
-				} else {
-					top = moveY - offsetTop - this.houverHeight / 2;
+					// eslint-disable-next-line prefer-const
+					let offsetTop = offset(this.oPreviewBox).top;
+					let left = moveX - offsetLeft - this.houverWidth / 2;
+					let top;
+					if (this.scroll > 0) {
+						top = moveY - offsetTop + this.scroll - this.houverHeight / 2;
+					} else {
+						top = moveY - offsetTop - this.houverHeight / 2;
+					}
+					// eslint-disable-next-line prefer-const
+					let maxWidth = this.pWidth - this.houverWidth;
+					// eslint-disable-next-line prefer-const
+					let maxHeight = this.pWidth - this.houverHeight;
+					left = left < 0 ? 0 : left > maxWidth ? maxWidth : left;
+					top = top < 0 ? 0 : top > maxHeight ? maxHeight : top;
+					// eslint-disable-next-line prefer-const
+					let percentX = left / maxWidth;
+					// eslint-disable-next-line prefer-const
+					let percentY = top / maxHeight;
+					this.oHoverBox.style.left = left + "px";
+					this.oHoverBox.style.top = top + "px";
+					this.oBigImg.style.left = percentX * (this.bWidth - this.imgWidth) + "px";
+					this.oBigImg.style.top =
+						percentY * (this.bHeight - this.imgHeight) + "px";
+					this.$emit("move", ev);
+					this.zoomVisiable = true;
 				}
-				// eslint-disable-next-line prefer-const
-				let maxWidth = this.pWidth - this.houverWidth;
-				// eslint-disable-next-line prefer-const
-				let maxHeight = this.pWidth - this.houverHeight;
-				left = left < 0 ? 0 : left > maxWidth ? maxWidth : left;
-				top = top < 0 ? 0 : top > maxHeight ? maxHeight : top;
-				// eslint-disable-next-line prefer-const
-				let percentX = left / maxWidth;
-				// eslint-disable-next-line prefer-const
-				let percentY = top / maxHeight;
-				this.oHoverBox.style.left = left + "px";
-				this.oHoverBox.style.top = top + "px";
-				this.oBigImg.style.left = percentX * (this.bWidth - this.imgWidth) + "px";
-				this.oBigImg.style.top =
-					percentY * (this.bHeight - this.imgHeight) + "px";
-				this.$emit("move", ev);
-				this.zoomVisiable = true;
+
 			},
 			init() {
 				this.oHoverBox = this.$refs.hoverBox;
@@ -209,9 +234,10 @@
 	h6,
 	input,
 	form {
-	  margin : 0;
-	  padding: 0;
+		margin: 0;
+		padding: 0;
 	}
+
 	.pic_box {
 		width: 400px;
 		height: 495px;
@@ -243,6 +269,63 @@
 						height: 100%;
 					}
 
+					.pre-player {
+						cursor: pointer;
+						position: absolute;
+						bottom: 20px;
+						left: 50%;
+						margin-left: -35px;
+						z-index: 2;
+
+						img {
+							width: 70px;
+							height: 25px;
+						}
+					}
+
+					.pre-text {
+						cursor: pointer;
+						z-index: 3;
+						position: absolute;
+						bottom: 27px;
+						left: 50%;
+						margin-left: -4px;
+						font-size: 12px;
+					}
+
+					.h-100 {
+						z-index: 4;
+						width: 360px;
+						height: 360px;
+						background-color: black;
+						position: absolute;
+						left: 0px;
+						top: 0px;
+
+						video {
+							width: 100%;
+							height: 100%;
+						}
+
+						.video-out {
+							z-index: 5;
+							width: 80px;
+							height: 30px;
+							line-height: 30px;
+							text-align: center;
+							background-color: rgba(241, 235, 235, .5);
+							position: absolute;
+							cursor: pointer;
+							top: 10px;
+							right: 10px;
+							border-radius: 30px;
+							font-size: 14px;
+							color: #FFFFFF;
+						}
+					}
+
+
+
 					&:hover .hover-box {
 						display: block;
 					}
@@ -272,7 +355,7 @@
 					border: 1px solid #eee;
 					box-sizing: border-box;
 					top: -21px;
-					z-index: 999;
+					z-index: 1;
 					background: #fff;
 
 					img {
@@ -330,7 +413,7 @@
 				width: 20px;
 				height: 62px;
 				line-height: 62px;
-				z-index: 99;
+				z-index: 1;
 				padding: 0;
 				font-size: 22px;
 				text-align: center;

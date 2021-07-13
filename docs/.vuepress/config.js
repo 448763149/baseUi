@@ -52,7 +52,7 @@ module.exports = {
 				children: ['/guide/magnifier/','/guide/hotProduct/']
 			},
 			{
-				title: '组2',
+				title: '通知公告',
 				collapsable: false,
 				sidebarDepth: 1,
 				children: ['/config/base/', '/config/high/']
