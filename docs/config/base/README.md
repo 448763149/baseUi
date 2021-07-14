@@ -1,19 +1,33 @@
-### 基础轮播公告
+### 轮播公告
 ::: demo 
 ```html
 <template>
-  <h-notice :noticeList="noticeList"  />
+  <h-notice :noticeList="noticeList" types="bottom">
+	  <div slot="notice" class="h-notice-left">
+			<div class="notice-left-img"><img :src="img" /></div>	
+			<div class="notice-left-text">{{text}}</div>	
+		</div>
+	</h-notice>
 </template>
 <script>
 export default {
 	data() {
 		return {
+			img:require("../../.vuepress/public/images/index/notice.png"),
+			text:'通知广告',
 			noticeList: [
 				'1', '2', '3', '4', '5', '6', '7'
 			],
 		}
-	}
+	},
 }
 </script>
 ```
-:::
+::: 
+### Attributes
+参数|说明|类型|可选值|默认值
+----|----|----|----|----
+noticeList|广告列表|Array|-|无
+img|自定义左侧图片|string|-|无
+text|自定义左侧文字|string|-|无
+types|轮播方向|string|top,bottom,left,right|top
