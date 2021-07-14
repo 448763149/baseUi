@@ -20,7 +20,9 @@
 		props:{
 			noticeList: {
 				type: Array,
-				default: []
+				default: () => {
+					return []
+				}
 			},
 			types: {
 				type: String,

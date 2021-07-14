@@ -69,7 +69,9 @@
 			},
 			productInfo: {
 				type: Object,
-				default: {},
+				default: () => {
+					return {}
+				}
 			},
 			showBigSrc: {
 				type: String,
@@ -108,14 +110,16 @@
 			};
 		},
 		created() {
-			this.showSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
-			this.showBigSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
-			this.allNum = this.productInfo.productMultiImage.length;
-			this.playerUrl = this.productInfo.productMultiImage[0].player;
-			if (this.playerUrl) {
-				this.hasPlayer = true;
-			} else {
-				this.hasPlayer = false;
+			if(this.productInfo.productMultiImage && this.productInfo.productMultiImage.legnth> 0){
+				this.showSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
+				this.showBigSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
+				this.allNum = this.productInfo.productMultiImage.length;
+				this.playerUrl = this.productInfo.productMultiImage[0].player;
+				if (this.playerUrl) {
+					this.hasPlayer = true;
+				} else {
+					this.hasPlayer = false;
+				}
 			}
 		},
 		methods: {

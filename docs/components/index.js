@@ -4,7 +4,7 @@
  * @Autor: HuQiang
  * @Date: 2021-07-12 14:47:50
  * @LastEditors: HuQiang
- * @LastEditTime: 2021-07-12 14:48:27
+ * @LastEditTime: 2021-07-14 11:36:34
  * @detail: 
  * @change: 
  */
@@ -41,8 +41,6 @@ export default {
   // 导出的对象必须具有 install，才能被 Vue.use() 方法安装
   install,
   // 以下是具体的组件列表
-  // qwPopup,
-  // qwHhelloworld
   // 组件列表
   ...components
   
