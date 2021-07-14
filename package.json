@@ -12,11 +12,10 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "node-sass": "^4.14.1"
-  },
-  "devDependencies": {
+    "node-sass": "^4.14.1",
     "sass-loader": "^7.3.1",
     "vuepress": "^1.8.2",
     "vuepress-plugin-demo-container": "^0.2.0"
-  }
+  },
+  "devDependencies": {}
 }

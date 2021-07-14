@@ -5,16 +5,16 @@
 ```html
 <template>
   <h-hot-product :hotList="hotList">
-	<div slot="de-infos" class="de-infos" v-for="(item, index1) in hotList" :key="index1">
-		<div class="de-info-img">
-			<img :src="item.img" alt />
+		<div slot="de-infos" class="de-infos" v-for="(item, index1) in hotList" :key="index1">
+			<div class="de-info-img">
+				<img :src="item.img" alt />
+			</div>
+			<div class="de-info-text">{{ item.name }}</div>
+			<div class="de-info-price">
+				<span>￥</span>
+				<span>{{ item.price }}</span>
+			</div>
 		</div>
-		<div class="de-info-text">{{ item.name }}</div>
-		<div class="de-info-price">
-			<span>￥</span>
-			<span>{{ item.price }}</span>
-		</div>
-	</div>
 	</h-hot-product>
 </template>
 <script>
@@ -22,37 +22,37 @@ export default {
 	data() {
 		return {
 			hotList: [
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "71.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "72.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "73.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "74.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "75.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "76.00",
-			        },
-			      ],
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "71.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "72.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "73.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "74.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "75.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "76.00",
+				},
+			],
 		}
 	}
 }
@@ -83,37 +83,37 @@ export default {
 	data() {
 		return {
 			hotList: [
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "71.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "72.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "73.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "74.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "75.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "76.00",
-			        },
-			      ],
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "71.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "72.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "73.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "74.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "75.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "76.00",
+				},
+			],
 		}
 	}
 }
@@ -144,37 +144,37 @@ export default {
 	data() {
 		return {
 			hotList: [
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "71.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "72.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "73.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "74.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "75.00",
-			        },
-			        {
-			          img: require("../../.vuepress/public/images/product/hotimg.png"),
-			          name: "隔音棉毛毡房门密封门密封",
-			          price: "76.00",
-			        },
-			      ],
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "71.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "72.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "73.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "74.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "75.00",
+				},
+				{
+					img: require("../../.vuepress/public/images/product/hotimg.png"),
+					name: "隔音棉毛毡房门密封门密封",
+					price: "76.00",
+				},
+			],
 		}
 	}
 }

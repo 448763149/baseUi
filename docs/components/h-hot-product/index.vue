@@ -19,7 +19,9 @@
 		props: {
 			hotList: {
 				type: Array,
-				default: []
+				default: () => {
+					return []
+				}
 			},
 			type: {
 				type: String,

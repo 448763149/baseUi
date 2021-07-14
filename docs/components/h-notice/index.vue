@@ -29,7 +29,9 @@
 		props: {
 			noticeList: { // 广告数组
 				type: Array,
-				default: () => []
+				default: () => {
+					return []
+				}
 			},
 			types: { // 类型
 				type: String,
