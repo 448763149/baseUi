@@ -110,7 +110,7 @@
 			};
 		},
 		created() {
-			if(this.productInfo.productMultiImage && this.productInfo.productMultiImage.legnth> 0){
+			if(this.productInfo.productMultiImage && this.productInfo.productMultiImage.length> 0){
 				this.showSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
 				this.showBigSrc1 = this.productInfo.productMultiImage[0].bigImageUrl;
 				this.allNum = this.productInfo.productMultiImage.length;
