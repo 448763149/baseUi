@@ -4,8 +4,8 @@
 <template>
   <div class="all_icon">
 	  <div class="icon_item" v-for="(item,index) in iconJson.glyphs" :key="index">
-		<h-icon :types="iconHeader+item.font_class" :size="30" />
-		<div class="icon_text">{{iconJson.css_prefix_text+item.font_class}}</div>
+			<h-icon :types="iconHeader+item.font_class" :size="30" />
+			<div class="icon_text">{{iconJson.css_prefix_text+item.font_class}}</div>
 		</div>
 	</div>
 </template>

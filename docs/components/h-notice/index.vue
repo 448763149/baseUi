@@ -1,24 +1,19 @@
 <template>
 	<div class="h-notice">
-		<div ref="noticeLeft">
+		<div class="h-slotClass" ref="noticeLeft">
 			<slot name="notice" />
 		</div>
-		<div class="notice-info" :style="{marginLeft:slotsValue+'px'}" v-if="typeValue=='top'||typeValue=='bottom'">
+		<div v-if="typeValue=='top'||typeValue=='bottom'" class="notice-info" :style="{marginLeft:slotsValue+'px'}">
 			<div class="notice-ov"
 				:style="{bottom:(typeValue=='bottom'?topSet+'px':''),top:(typeValue=='top'?topSet+'px':'')}">
-				<div class="notice-item" v-for="(item,index) in noticeList" :key="index">
-					<div class="notice-info-text">{{item}}</div>
-					<div class="notice-info-img"><img src="../../.vuepress/public/images/index/right.png"></div>
-				</div>
+				<slot name="noticeList" />
 			</div>
 		</div>
-		<div class="notice-info" :style="{marginLeft:slotsValue+'px'}" ref="notInfo" v-if="typeValue=='left'">
-			<div class="notice-ov1" :style="{left:(typeValue=='left'?leftSet+'px':'')}">
-				<div class="notice-item" :style="{width:infoWidth+'px'}" v-for="(item,index) in noticeList"
-					:key="index">
-					<div class="notice-info-text">{{item}}</div>
-					<div class="notice-info-img"><img src="../../.vuepress/public/images/index/right.png"></div>
-				</div>
+		<div v-if="typeValue=='left'||typeValue=='right'" class="notice-info"
+			:style="{marginLeft:(typeValue=='right'?'0px':slotsValue+'px')}" ref="notInfo">
+			<div class="notice-ov1" ref="noticeItem"
+				:style="{left:(typeValue=='left'?leftSet+'px':''),right:(typeValue=='right'?leftSet+'px':'')}">
+				<slot name="noticeList" />
 			</div>
 		</div>
 	</div>
@@ -50,7 +45,8 @@
 		},
 		created() {
 			this.typeValue = this.types;
-			if (this.typeValue && this.typeValue != 'bottom' && this.typeValue != 'left') {
+			if (this.typeValue && this.typeValue != 'bottom' && this.typeValue != 'left' && this.typeValue !=
+				'right') {
 				this.typeValue = 'top'
 			}
 		},
@@ -58,36 +54,75 @@
 			if (this.typeValue == 'bottom') {
 				this.noticeList = this.noticeList.reverse()
 			};
-			if (this.typeValue && this.typeValue != 'bottom' && this.typeValue != 'left') {
+			if (this.typeValue && this.typeValue != 'bottom' && this.typeValue != 'left' && this.typeValue !=
+				'right') {
 				this.typeValue = 'top'
 			}
 			setTimeout(() => {
 				if (this.$refs.noticeLeft.children[0]) {
-					console.log(this.$refs.noticeLeft.children[0].offsetWidth)
 					this.slotsValue = this.$refs.noticeLeft.children[0].offsetWidth + 10
 				}
 			}, 10);
 			if (this.$refs.noticeLeft.children[0].children[0]) {
 				this.imgHeight = this.$refs.noticeLeft.children[0].children[0].offsetHeight
 			}
-			console.log(this.$refs.noticeLeft.children[0])
-			if (this.$refs.notInfo) {
-				this.infoWidth = this.$refs.notInfo.offsetWidth
-			}
+
+			setTimeout(() => {
+				if (this.$refs.notInfo) {
+					this.infoWidth = this.$refs.notInfo.offsetWidth
+				}
+				if (this.$refs.noticeItem) {
+					this.getNotItem()
+				}
+			}, 10);
+
 			let that = this
 			let unNum = that.noticeList.length - 1
 			let interv = setInterval(function() {
+				// for (let i = 0; i < that.$refs.noticeItem.children.length; i++) {
+				// 	that.$refs.noticeItem.children[i].style.left=parseInt(that.$refs.noticeItem.children[i].style.left)-563+'px'
+				//   if(parseInt(that.$refs.noticeItem.children[i].style.left)==-563*(that.$refs.noticeItem.children.length-1)){
+				// 		that.$refs.noticeItem.children[i].style.left=563+'px'
+				// 	}
+				// }
+				
 				that.topSet = that.topSet - 30
-				that.leftSet -= that.infoWidth + 10
-				if (that.typeValue == 'top' || that.typeValue == 'left') {
+				if (that.typeValue == 'right') {
+					that.leftSet -= that.infoWidth
+				} else {
+					that.leftSet -= that.infoWidth + 10
+				}
+				if (that.typeValue == 'top' || that.typeValue == 'left' || that.typeValue == 'right') {
 					that.noticeList.push(that.noticeList[that.num])
 					that.num++
 				} else if (that.typeValue == 'bottom') {
 					that.noticeList.unshift(that.noticeList[unNum])
 				}
+				if (that.$refs.noticeItem) {
+					that.getNotItem()
+				}
 			}, 3000);
 			// clearInterval(interv)
 		},
+		methods: {
+			getNotItem() {
+				for (let i = 0; i < this.$refs.noticeItem.children.length; i++) {
+					if (this.typeValue == 'right') {
+						this.$refs.noticeItem.children[i].style.width = this.infoWidth - 10 + 'px'
+						this.$refs.noticeItem.children[i].style.marginLeft = '10px'
+						this.$refs.noticeItem.children[i].style.marginRight = '0px'
+						this.$refs.noticeItem.children[i].style.float = 'right'
+					} else {
+						this.$refs.noticeItem.children[i].style.width = this.infoWidth + 'px'
+						this.$refs.noticeItem.children[i].style.marginLeft = '0px'
+						this.$refs.noticeItem.children[i].style.marginRight = '10px'
+						this.$refs.noticeItem.children[i].style.float = 'left'
+					}
+					// const gg = `<div class="notice-info-img"><img :src="rightImg"></div>`
+					// this.$refs.noticeItem.children[i].append()
+				}
+			}
+		}
 	}
 </script>
 <style scoped lang="scss">
@@ -130,7 +165,6 @@
 			flex-grow: 1;
 			position: relative;
 			margin-top: 20px;
-			margin-left: 130px;
 			overflow: hidden;
 
 			.notice-ov {
@@ -155,10 +189,6 @@
 
 					.notice-info-img {
 						float: right;
-
-						img {
-							margin-top: 8px;
-						}
 					}
 				}
 
@@ -186,10 +216,8 @@
 
 					.notice-info-img {
 						float: right;
-
-						img {
-							margin-top: 8px;
-						}
+						line-height: 30px;
+						
 					}
 				}
 

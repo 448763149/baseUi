@@ -22,22 +22,3 @@ export default {
   }
 }
 </script>
-<style>
-.all_icon{
-}
-.icon_item{
-	width: 20%;
-	display: inline-block;
-	margin: 20px 0px;
-	text-align: center;
-}
-.icon_item:hover{
-	color: #0086B3;
-}
-.demo-block-control{
-	display: none;
-}
-.icon_text{
-	font-size: 12px;
-}
-</style>

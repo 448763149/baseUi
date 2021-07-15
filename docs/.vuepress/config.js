@@ -75,16 +75,7 @@ module.exports = {
 					},
 					{
 						text: '配置',
-						items: [{
-								text: '基本配置',
-								link: '/config/base/',
-								// target: '_blank' 
-							},
-							{
-								text: '高级配置',
-								link: '/config/high/'
-							}
-						]
+						link: '/config/base/',
 					}
 				],
 

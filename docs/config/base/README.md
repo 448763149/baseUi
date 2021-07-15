@@ -2,10 +2,14 @@
 ::: demo 
 ```html
 <template>
-  <h-notice :noticeList="noticeList" types="bottom">
+  <h-notice :noticeList="noticeList" types="top">
 	  <div slot="notice" class="h-notice-left">
 			<div class="notice-left-img"><img :src="img" /></div>	
 			<div class="notice-left-text">{{text}}</div>	
+		</div>
+		<div slot="noticeList" class="notice-item" v-for="(item,index) in noticeList" :key="index">
+			<div class="notice-info-text">{{item.text}}</div>
+			<div class="notice-info-img"><h-icon types="h-xiangyou2" /></div>
 		</div>
 	</h-notice>
 </template>
@@ -14,9 +18,18 @@ export default {
 	data() {
 		return {
 			img:require("../../.vuepress/public/images/index/notice.png"),
+			rightImg:require("../../.vuepress/public/images/index/right.png"),
 			text:'通知广告',
 			noticeList: [
-				'1', '2', '3', '4', '5', '6', '7'
+				{
+					text:'11'
+				},
+				{
+					text:'22'
+				},
+				{
+					text:'33'
+				},
 			],
 		}
 	},
