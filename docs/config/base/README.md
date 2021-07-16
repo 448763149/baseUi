@@ -2,9 +2,9 @@
 ::: demo 
 ```html
 <template>
-  <h-notice :noticeList="noticeList">
+  <h-notice types="top">
 	  <div slot="notice" class="h-notice-left">
-			<div class="notice-left-img"><img :src="img" /></div>	
+			<div class="notice-left-img"><h-icon types="h-gonggao" :size="24" /></div>	
 			<div class="notice-left-text">{{text}}</div>	
 		</div>
 		<div slot="noticeList" class="notice-item" v-for="(item,index) in noticeList" :key="index">
@@ -32,9 +32,7 @@ export default {
 				{
 					text:'44'
 				},
-				{
-					text:'55'
-				},
+				
 			],
 		}
 	},

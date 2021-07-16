@@ -1,7 +1,5 @@
 <template>
-	<div>
   <i :class="[types,'iconfont']" :style="{fontSize:size+'px'}"></i>
-	</div>
 </template>
 <script>
 export default {

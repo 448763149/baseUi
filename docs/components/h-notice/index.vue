@@ -14,13 +14,6 @@
 export default {
   name: "hNotice",
   props: {
-    noticeList: {
-      // 广告数组
-      type: Array,
-      default: () => {
-        return [];
-      },
-    },
     types: {
       // 类型
       type: String,
@@ -30,7 +23,7 @@ export default {
   data() {
     return {
       slotsValue: 0, // slot元素宽度
-			interv:'', // 定时器
+      interv: "", // 定时器
     };
   },
   created() {
@@ -47,13 +40,13 @@ export default {
     this.getNotItem();
   },
   destroyed() {
-    clearInterval(this.interv)
+    clearInterval(this.interv);
   },
   methods: {
     getNotItem() {
       if (
         this.$refs.noticeItemTop.children &&
-        this.$refs.noticeItemTop.children.length > 0
+        this.$refs.noticeItemTop.children.length > 1
       ) {
         for (let i = 0; i < this.$refs.noticeItemTop.children.length; i++) {
           if (this.typeValue == "top") {
@@ -76,7 +69,7 @@ export default {
       that.interv = setInterval(function () {
         if (
           that.$refs.noticeItemTop.children &&
-          that.$refs.noticeItemTop.children.length > 0
+          that.$refs.noticeItemTop.children.length > 1
         ) {
           for (let i = 0; i < that.$refs.noticeItemTop.children.length; i++) {
             if (that.typeValue == "top") {
@@ -92,6 +85,17 @@ export default {
               } else {
                 that.$refs.noticeItemTop.children[i].style.transition =
                   "all .5s";
+              }
+              if (that.$refs.noticeItemTop.children.length == 2) {
+                if (
+                  parseInt(that.$refs.noticeItemTop.children[i].style.top)!=0
+                ) {
+                  that.$refs.noticeItemTop.children[i].style.transition =
+                    "none";
+                } else {
+                  that.$refs.noticeItemTop.children[i].style.transition =
+                    "all .5s";
+                }
               }
               if (
                 parseInt(that.$refs.noticeItemTop.children[i].style.top) ==
@@ -114,6 +118,17 @@ export default {
               } else {
                 that.$refs.noticeItemTop.children[i].style.transition =
                   "all .5s";
+              }
+              if (that.$refs.noticeItemTop.children.length == 2) {
+                if (
+                  parseInt(that.$refs.noticeItemTop.children[i].style.bottom)!=0
+                ) {
+                  that.$refs.noticeItemTop.children[i].style.transition =
+                    "none";
+                } else {
+                  that.$refs.noticeItemTop.children[i].style.transition =
+                    "all .5s";
+                }
               }
               if (
                 parseInt(that.$refs.noticeItemTop.children[i].style.bottom) ==
@@ -169,28 +184,25 @@ export default {
 </script>
 <style scoped lang="scss">
 .h-notice {
-  height: 70px;
-  border: 1px solid #eee;
-  box-sizing: border-box;
-  vertical-align: middle;
   position: relative;
 
   .h-notice-left {
-    height: 70px;
-    line-height: 70px;
+    height: 30px;
+    line-height: 30px;
     float: left;
 
     div {
       float: left;
     }
 
-    span {
-    }
 
     .notice-left-img {
       display: table;
 
       img {
+        vertical-align: middle;
+      }
+      .iconfont {
         vertical-align: middle;
       }
     }
@@ -207,7 +219,6 @@ export default {
     height: 30px;
     flex-grow: 1;
     position: relative;
-    margin-top: 20px;
     overflow: hidden;
 
     .notice-ov {
@@ -226,7 +237,7 @@ export default {
           max-width: 87%;
           height: 30px;
           line-height: 30px;
-          font-size: 14px;
+          font-size: 16px;
           float: left;
           overflow: hidden;
           text-overflow: ellipsis;
