@@ -2,7 +2,7 @@
 ::: demo 
 ```html
 <template>
-  <h-notice :noticeList="noticeList" types="top">
+  <h-notice :noticeList="noticeList">
 	  <div slot="notice" class="h-notice-left">
 			<div class="notice-left-img"><img :src="img" /></div>	
 			<div class="notice-left-text">{{text}}</div>	
@@ -18,7 +18,6 @@ export default {
 	data() {
 		return {
 			img:require("../../.vuepress/public/images/index/notice.png"),
-			rightImg:require("../../.vuepress/public/images/index/right.png"),
 			text:'通知广告',
 			noticeList: [
 				{
@@ -29,6 +28,12 @@ export default {
 				},
 				{
 					text:'33'
+				},
+				{
+					text:'44'
+				},
+				{
+					text:'55'
 				},
 			],
 		}
