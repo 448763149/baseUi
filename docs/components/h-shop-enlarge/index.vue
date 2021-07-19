@@ -44,7 +44,7 @@
             <img :src="showSrc1" v-if="!isPlay" alt="" />
             <div v-if="!isPlay" ref="hoverBox" class="hover-box" />
           </div>
-          <div v-show="zoomVisiable" ref="zoomBox" class="zoom-box">
+          <div v-show="zoomVisiable" ref="zoomBox" class="zoom-box" :style="{right:(direction=='left'?'377px':''),left:(direction=='right'?'377px':'')}">
             <img ref="bigImg" :src="showBigSrc1" alt="" />
           </div>
         </div>
@@ -105,6 +105,10 @@ export default {
     iteml: {
       type: String,
       default: "0",
+    },
+    direction:{
+      type: String,
+      default: "right",
     },
     productInfo: {
       type: Object,
@@ -395,11 +399,10 @@ form {
         height: 495px;
         overflow: hidden;
         position: absolute;
-        left: 377px;
         border: 1px solid #eee;
         box-sizing: border-box;
         top: -21px;
-        z-index: 1;
+        z-index: 10;
         background: #fff;
 
         img {
@@ -428,15 +431,13 @@ form {
         width: 64px;
         height: 64px;
         margin-right: 10px;
-        border: 1px solid #eee;
+        border: 2px solid #eee;
         box-sizing: border-box;
         cursor: pointer;
 
         &.item-cur {
-          img {
             border: 2px solid #ff4349;
             box-sizing: border-box;
-          }
         }
 
         img {

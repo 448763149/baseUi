@@ -2,7 +2,7 @@
 ::: demo 
 ```html
 <template>
-  <h-notice types="top">
+  <h-notice types="bottom">
 	  <div slot="notice" class="h-notice-left">
 			<div class="notice-left-img"><h-icon types="h-gonggao" :size="24" /></div>	
 			<div class="notice-left-text">{{text}}</div>	
@@ -21,16 +21,16 @@ export default {
 			text:'通知广告',
 			noticeList: [
 				{
-					text:'11'
+					text:'超50万中国网民联署：调查德特里克堡！'
 				},
 				{
-					text:'22'
+					text:'拜登要断美国商界的财路 美国商人急了'
 				},
 				{
-					text:'33'
+					text:'55名奥运相关人员确诊 东京奥运压力空前'
 				},
 				{
-					text:'44'
+					text:'“吴亦凡事件”发酵！良品铺子也发声了'
 				},
 				
 			],

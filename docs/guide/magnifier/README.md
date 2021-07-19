@@ -4,7 +4,7 @@
 ::: demo 
 ```html
 <template>
-  <h-shop-enlarge :productInfo="productInfo" />
+  <h-shop-enlarge :productInfo="productInfo" direction="left" />
 </template>
 <script>
 export default {
@@ -17,8 +17,7 @@ export default {
 			            basicImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yAHGuiAACt1EW0W7Q419.jpg",
-			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
+			            bigImageUrl:require("../../.vuepress/public/images/guide/mag6.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yATHPMAABfMDqdlsI927.jpg",
 			            position: 0,
@@ -32,7 +31,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag2.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -46,7 +45,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag3.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -60,7 +59,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag4.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -75,7 +74,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yAHGuiAACt1EW0W7Q419.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
+			              require("../../.vuepress/public/images/guide/mag5.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yATHPMAABfMDqdlsI927.jpg",
 			            position: 0,
@@ -89,7 +88,7 @@ export default {
 								    "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 								  bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 								  bigImageUrl:
-								    "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+								    require("../../.vuepress/public/images/guide/mag7.jpg"),
 								  centerImageKey:
 								    "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 								  position: 1,
@@ -111,7 +110,7 @@ export default {
 ::: demo 
 ```html
 <template>
-  <h-shop-enlarge :productInfo="productInfo" type="player" />
+  <h-shop-enlarge :productInfo="productInfo" direction="left" type="player" />
 </template>
 <script>
 export default {
@@ -125,7 +124,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yAHGuiAACt1EW0W7Q419.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
+			              require("../../.vuepress/public/images/guide/mag6.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yATHPMAABfMDqdlsI927.jpg",
 			            position: 0,
@@ -139,7 +138,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag2.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -153,7 +152,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag3.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -167,7 +166,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+			              require("../../.vuepress/public/images/guide/mag4.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 			            position: 1,
@@ -182,7 +181,7 @@ export default {
 			              "group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
 			            bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yAHGuiAACt1EW0W7Q419.jpg",
 			            bigImageUrl:
-			              "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R4iALFpXAAFoEIyys1s475.jpg",
+			              require("../../.vuepress/public/images/guide/mag5.jpg"),
 			            centerImageKey:
 			              "group1/M00/00/D6/rBEBUGB9R7yATHPMAABfMDqdlsI927.jpg",
 			            position: 0,
@@ -196,7 +195,7 @@ export default {
 								    "group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
 								  bigImageKey: "group1/M00/00/D6/rBEBUGB9R7yACk8gAADoGvqAyQ4945.jpg",
 								  bigImageUrl:
-								    "https://www.caiyichetrade.com/group1/M00/00/D6/rBEBUGB9R46AS2EyAAIMJF9AsPQ999.jpg",
+								    require("../../.vuepress/public/images/guide/mag7.jpg"),
 								  centerImageKey:
 								    "group1/M00/00/D6/rBEBUGB9R7yAMh6dAAB7qg_my4Q829.jpg",
 								  position: 1,
@@ -220,3 +219,4 @@ type|是否带有视频播放功能|string|player|无
 productInfo|商品详情轮播图列表|object|无|无
 bigImageUrl|当前显示放大镜图|string|无|无
 player|当前视频播放地址|string|无|无
+direction|放大图显示位置|string|left，right|right

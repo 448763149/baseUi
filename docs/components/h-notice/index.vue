@@ -142,7 +142,8 @@ export default {
                 563 +
                 "px";
               if (
-                parseInt(that.$refs.noticeItemTop.children[i].style.left) != 0
+                parseInt(that.$refs.noticeItemTop.children[i].style.left) >563||
+                parseInt(that.$refs.noticeItemTop.children[i].style.left) <-563
               ) {
                 that.$refs.noticeItemTop.children[i].style.transition = "none";
               } else {
@@ -161,7 +162,8 @@ export default {
                 563 +
                 "px";
               if (
-                parseInt(that.$refs.noticeItemTop.children[i].style.right) != 0
+                parseInt(that.$refs.noticeItemTop.children[i].style.right) >563||
+                parseInt(that.$refs.noticeItemTop.children[i].style.right) <-563
               ) {
                 that.$refs.noticeItemTop.children[i].style.transition = "none";
               } else {
